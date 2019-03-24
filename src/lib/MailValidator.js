@@ -21,11 +21,9 @@ export default class extends BaseValidator {
     if (match) {
       return Promise.resolve();
     } else {
-      return Promise.reject({
-        success: false,
-        type: this.type,
-        message: `${this.typeName}のフォーマットが異なります。`
-      })
+      const message = `${this.typeName}のフォーマットが異なります。`
+      const err = super._errorResult(message);
+      return Promise.reject(err)
     }
   }
 }
