@@ -38,11 +38,9 @@ export default class extends BaseValidator {
     if (match) {
       return Promise.resolve();
     } else {
-      return Promise.reject({
-        success: false,
-        type: this.type,
-        message: `${this.typeName}には、半角英数字と記号のみが利用可能です。`
-      })
+      const message = `${this.typeName}には、半角英数字と記号のみが利用可能です。`
+      const err = super._errorResult(message);
+      return Promise.reject(err)
     }
   }
   _includeCapLetter() {
@@ -51,11 +49,9 @@ export default class extends BaseValidator {
     if (match) {
       return Promise.resolve();
     } else {
-      return Promise.reject({
-        success: false,
-        type: this.type,
-        message: `${this.typeName}には、必ず大文字の英数字が含まれる必要があります。`
-      })
+      const message = `${this.typeName}には、必ず大文字の英数字が含まれる必要があります。`
+      const err = super._errorResult(message);
+      return Promise.reject(err)
     }
   }
   _includeSymbol() {
@@ -64,11 +60,9 @@ export default class extends BaseValidator {
     if (match) {
       return Promise.resolve();
     } else {
-      return Promise.reject({
-        success: false,
-        type: this.type,
-        message: `${this.typeName}には、_-@.の記号のいずれかが一文字以上含まれる必要があります。`
-      })
+      const message = `${this.typeName}には、_-@.の記号のいずれかが一文字以上含まれる必要があります。`
+      const err = super._errorResult(message);
+      return Promise.reject(err)
     }
   }
 }
